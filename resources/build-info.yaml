@@ -1,0 +1,17 @@
+build_steps:
+- name: code buils
+  source: "."
+  image:
+    name: maven:3-alpine
+    docker_run_params: '-v $HOME/.m2:/root/.m2
+  commands:
+   - "mvn -v"
+   - "echo mvn build"
+test_steps:
+ - name: code test
+   source: "."
+   image:
+    name: maven:3-alpine
+    docker_run_params: '-v $HOME/.m2:/root/.m2
+  commands:
+   - "mvn test"
